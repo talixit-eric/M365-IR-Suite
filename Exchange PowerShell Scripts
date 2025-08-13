@@ -1,0 +1,34 @@
+#PowerShell Commands for logging into Tenant
+
+###Use these 3 Commands before. Then Run Powershell as Administrator###
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Install-Module -Name ExchangeOnlineManagement -Scope CurrentUser
+Connect-ExchangeOnline
+
+#Get All mailboxes
+Get-Mailbox 
+
+#Get Move Request
+get-moverequest  
+
+#Get Migration User Info
+Get-MigrationUser | Get-MigrationUserStatistics  
+
+#Get Inbox Rules
+Get-InboxRule -Mailbox <upn>  
+
+#Get Mailbox Rules (Hidden View)
+Get-InboxRule -Mailbox user@domain.com -IncludeHidden
+
+#Get Mailbox Rules (Hidden View) + Remove Rules
+Get-InboxRule -Mailbox user@domain.com -includehidden | Remove-InboxRule
+
+# Remove all inbox rules including hidden rules
+Remove-InboxRule -Identity "16752869479666417665" -Mailbox john.doe@example.com
+
+#Pull all rules and inspect forwarding/redirecting
+Get-InboxRule -Mailbox user@domain.com -IncludeHidden |
+Select-Object Name, Enabled, ForwardTo, RedirectTo, CopyTo, Description
+ 
+#Disconnect from Exchange
+Disconnect-ExchangeOnline  
