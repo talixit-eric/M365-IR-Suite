@@ -13,12 +13,16 @@ Start-HawkTenantInvestigation
 #The command you need to run data on a user, this is up to 90 days.
 Start-HawkUserInvestigation -UserPrincipalName user@domain.com
 
-
-#Website: https://hawkforensics.io/
-
-
 #30 Day Investigation 
 Start-HawkTenantInvestigation -DaysToLookBack 30 -FilePath 'C:\HawkOutput' -SkipUpdate
 
-#Date Range Investigation
+#60 Day Investigation 
+Start-HawkTenantInvestigation -DaysToLookBack 60 -FilePath 'C:\HawkOutput' -SkipUpdate
+
+#90 Day Investigation 
+Start-HawkTenantInvestigation -DaysToLookBack 90 -FilePath 'C:\HawkOutput' -SkipUpdate
+
+#Date Range Investigation 
 Start-HawkTenantInvestigation -StartDate '01/01/2024' -EndDate '01/31/2024' -FilePath 'C:\Investigations\Jan2024'
+
+Website: https://hawkforensics.io/
